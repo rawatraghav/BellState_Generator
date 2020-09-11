@@ -32,5 +32,6 @@ Implement a circuit that returns |01> and |10> with equal probability.
 2. Execute `python main.py`
 
 ## Circuit Design ##
-- [Ideal state](media/ideal_state.png)
+- Ideal state
+![Ideal state](media/ideal_state.png)
 
