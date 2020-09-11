@@ -22,7 +22,16 @@ Implement a circuit that returns |01> and |10> with equal probability.
 
 **Requirements met**  
 - Ideal circuit involving just one RY and CNOT gate each. :D 
-- Start from all parameters in parametric gates being equal to 0 or randomly chosen. 
-- You should find the right set of parameters using gradient descent (you can use more advanced optimization methods if you like). 
+- The code has parameters, 'shots' and 'theta', initially being equal to 0 or randomly chosen. 
+- The ideal values of parameter 'theta' have been obtained using both Gradient descent and Nesterov Accelerated Gradient, followed by a performance comparison.  
 - Simulations must be done with sampling - i.e. a limited number of measurements per iteration and noise. 
-- Compare the results for different numbers of measurements: 1, 10, 100, 1000.
+- Results of the optimizer have been compared for four different amounts of measurements: 1, 10, 100, 1000.
+
+---
+## Instructions to Run Program ##
+1. Install `qiskit`
+2. Execute `python main.py`
+
+## Circuit Design ##
+
+
