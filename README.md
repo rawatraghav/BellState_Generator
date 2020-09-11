@@ -33,5 +33,6 @@ Implement a circuit that returns |01> and |10> with equal probability.
 
 ## Circuit Design ##
 - Ideal state
+
 ![Ideal state](media/ideal_state.png)
 
