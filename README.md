@@ -29,10 +29,12 @@ Implement a circuit that returns |01> and |10> with equal probability.
 ---
 ## Instructions to Run Program ##
 1. Install `qiskit`
-2. Execute `python main.py`
+2. Clone repository and execute python file `main.py`
 
 ## Circuit Design ##
 - Ideal state
-
 ![Ideal state](media/ideal_state.png)
+- The state can be obtained by 
+
+
 
