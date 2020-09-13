@@ -33,8 +33,28 @@ Implement a circuit that returns |01> and |10> with equal probability.
 
 ## Circuit Design ##
 - Ideal state
-![Ideal state](media/ideal_state.png)
-- The state can be obtained by 
+ ![Ideal state](media/ideal_state.png)
+- The state can be obtained by first applying `Hadamard` and `X` gates to q0 and q1
+ ![Hadamard](media/Hadamard.png)
+- And then applying `CNOT` (0 -> 1) gate
+ ![CNOT](media/cnot.png)
+
+## Ideal quantum circuit
+- The ideal circuit can then be consolidated as follows
+![Circuit](media/circuit.png)
+
+## Design Partitions
+- The problem statement can be approached with a Hybrid Classical-Quantum optimization model, having three major partitions. 
+  1. The `Bell State Generator` instantiates a quantum circuit required for the state generation, but with one optimizable parameter `theta`. It is a Quantum circuit.
+  2. `Cost Function` calculates the cost or error for the parameter value of current iteration.It is a classical calculation.
+  3. `Optimizer`, is a classical machine learning optimizer, updates the values of parameter `theta` for better performance of the circuit. Two classical optimizers namely - 'gradient descent' and 'Nesterov Accelerated Gradient' have been used and compared.
+
+  ![Design](media/design.png)
+  
+
+
+
+
 
 
 
