@@ -9,6 +9,20 @@
 
 ## Contents
 
+- [Problem Statement](#problem-statement)
+- [Instructions to Run Program](#instructions-to-run-program)
+- [Circuit Design](#circuit-design)
+- [Design Partitions](#design-partitions)
+- [Parameterized Circuit](#parameterized-circuit)
+- [Cost Function](#cost-function)
+- [Mean Squared Error](#mean-squared-error)
+- [Optimizers](#optimizers)
+  - [Gradient Descent](#gradient-descent)
+  - [NAG(Nesterov Accelerated Gradient)](#nagnesterov-accelerated-gradient)
+- [Results and Comparison](#results-and-comparison)
+- [Bonus Question](#bonus-question)
+- [Future Scope](#future-scope)
+
 ---
 
 ## Problem Statement ##
