@@ -37,8 +37,8 @@ Implement a circuit that returns |01> and |10> with equal probability.
 
 **Requirements met**  
 - Ideal circuit involves just one RY and CNOT gate each. :D 
-- Code has parameters, 'shots' and 'theta', initially being equal to 0 or randomly chosen. 
-- Ideal values of parameter 'theta' obtained using both Gradient descent and Nesterov Accelerated Gradient, followed by a performance comparison.  
+- Code has parameters, 'shots' and 'angle', initially being equal to 0 or randomly chosen. 
+- Ideal values of parameter 'angle' obtained using both Gradient descent and Nesterov Accelerated Gradient, followed by a performance comparison.  
 - Results of the optimizer have been compared for four different amounts of measurements: 1, 10, 100, 1000.
 
 ---
@@ -53,7 +53,11 @@ Implement a circuit that returns |01> and |10> with equal probability.
 - The state can be obtained by first applying `Hadamard` and `X` gates to q0 and q1
     
     ![Hadamard](media/Hadamard.png)
-- And then applying `CNOT` (0 -> 1) gate
+    
+    ![PauliX](media/X.png)
+- And then applying `CNOT` (0 -> 1) gate to the two-qubit system.
+
+    ![TwoQubit](media/two_qubit.png)
     
     ![CNOT](media/cnot.png)
 
@@ -64,16 +68,16 @@ Implement a circuit that returns |01> and |10> with equal probability.
 
 ## Design Partitions
 - The problem statement can be approached with a Hybrid Classical-Quantum optimization model, having three major partitions. 
-  1. The `Bell State Generator` instantiates a quantum circuit required for the state generation, but with one optimizable parameter `theta`. It is a Quantum circuit.
+  1. The `Bell State Generator` instantiates a quantum circuit required for the state generation, but with one optimizable parameter `angle`. It is a Quantum circuit.
   2. `Cost Function` calculates the cost or error for the parameter value of current iteration.It is a classical calculation.
-  3. `Optimizer`, is a classical machine learning optimizer, updates the values of parameter `theta` for better performance of the circuit. Two classical optimizers namely - 'gradient descent' and 'Nesterov Accelerated Gradient' have been used and compared.
+  3. `Optimizer`, is a classical machine learning optimizer, updates the values of parameter `angle` for better performance of the circuit. Two classical optimizers namely - 'gradient descent' and 'Nesterov Accelerated Gradient' have been used and compared.
 
      ![Design](media/design.png)
   
 ---
 ## Cirquit and Parameter Initialization ##
 1. Qubit 0 is initialized to state [1,0], and Qubit 1 to [0,1] to be able to reach the aforementioned Bell State.
-2. Parameter `theta` which is the angle by which the paraterized gate will rotate.
+2. Parameter `angle` which is the angle by which the paraterized gate will rotate.
 3. The angle is converted to `radians` from `degrees`and given a random initial value.
 ---
 ## Cost Function ##
@@ -87,7 +91,7 @@ Implement a circuit that returns |01> and |10> with equal probability.
 ### Gradient Descent
 - The Gradient Descent Optimizer is used as it simplifies the process of convergence when our loss function is quadratic in nature.
 - The local and global minimas are same things with same depths and the `loss landscape` can be easily analysed with much less compute power, and good accuracy.
-- The parameter `theta` is being learned, using Gradient Descent and alpha is the `learning_rate`.  
+- The parameter `angle` is being learned, using Gradient Descent and alpha is the `learning_rate`.  
 
      ![gd](media/GDstep.png)
 
@@ -100,7 +104,7 @@ Implement a circuit that returns |01> and |10> with equal probability.
 ---
 ## Results and Comparison ##
 - The results are taken for measurements 1, 10, 100 and 1000 respectively.
-- The optimized value of theta over a range of 1000 iterations of given number of shots have been calculated.
+- The optimized value of `angle` over a range of 1000 iterations of given number of shots have been calculated.
 - Expected output: 90 degrees or a multiple of 90 degrees 
 
 ### 1. Gradient Descent
