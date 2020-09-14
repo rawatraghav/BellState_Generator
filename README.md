@@ -9,20 +9,6 @@
 
 ## Contents
 
-- [Problem Statement](#problem-statement)
-- [Instructions to Run Program](#instructions-to-run-program)
-- [Circuit Design](#circuit-design)
-- [Design Partitions](#design-partitions)
-- [Parameterized Circuit](#parameterized-circuit)
-- [Cost Function](#cost-function)
-- [Mean Squared Error](#mean-squared-error)
-- [Optimizers](#optimizers)
-  - [Gradient Descent](#gradient-descent)
-  - [NAG(Nesterov Accelerated Gradient)](#nagnesterov-accelerated-gradient)
-- [Results and Comparison](#results-and-comparison)
-- [Bonus Question](#bonus-question)
-- [Future Scope](#future-scope)
-
 ---
 
 ## Problem Statement ##
@@ -69,6 +55,53 @@ Implement a circuit that returns |01> and |10> with equal probability.
 
     ![Design](media/design.png)
   
+---
+## Cirquit and Parameter Initialization ##
+1. Qubit 0 is initialized to state [1,0], and Qubit 1 to [0,1] to be able to reach the aforementioned Bell State.
+2. Parameter `theta` which is the angle by which the paraterized gate will rotate.
+3. The angle is converted to `radians` from `degrees`and given a random initial value.
+---
+## Cost Function ##
+### Mean Squared Error 
+- The Cost function is a simple MSE function that can be used with the first order derivative optimizers like Gradient Descent very easily.
+- The cost function is the squared difference of the Probability averages of both states `|01>` and `|10>`, that are obtained after the circuit is executed for a given number of `shots`.   
+![MSE](media/costfn.png)
+---
+## Optimizers ##
+### Gradient Descent
+- The Gradient Descent Optimizer is used as it simplifies the process of convergence when our loss function is quadratic in nature.
+- The local and global minimas are same things with same depths and the `loss landscape` can be easily analysed with much less compute power, and good accuracy.
+- The parameter `theta` is being learned, using Gradient Descent and alpha is the `learning_rate`.  
+![gd](media/GDstep.png)
+
+### Nesterov Accelerated Gradient
+
+- If the momentum is too high the algorithm may miss the local minima and may continue to rise up. So, to resolve this issue the `NAG algorithm` is used.
+- We know we’ll be using `γV(t−1)` for modifying the weights so, `θ−γV(t−1)` approximately tells us the future location. 
+![NAG](media/NAGstep.png)
+---
+## Results and Comparison ##
+- The results are taken for measurements 1, 10, 100 and 1000 respectively.
+- The optimized value of theta over a range of 1000 iterations of given number of shots have been calculated.
+- Expected output: 90 degrees or a multiple of 90 degrees 
+
+### 1. Gradient Descent
+- The error of measurement reaches a max of 1.05% among all cases as seen.
+![result gradient](media/gd_output.png)
+
+### 1. Nesterov Accelerated Gradient
+- The error of measurement reaches a max of 1.34% among all cases.
+![result gradient](media/nag_output.png)
+---
+## Bonus Question ##
+How to make sure you produce state `|01> + |10>` and not `|01> - |10>` ?
+
+- To prevent the occurrence of phase inverse of the required state i.e. `|01> - |10>`, we will have to alter our cost function to be unsymmetrical. To alter the Mean Sqared error, we can remove the squares and keep the function linear.
+- Normalising the cost function to a scale of `-1 to 1` with optimum at `0` along with a linear cost function.
+---
+## Conclusion and Future Scope ##
+- Use of the concept of `momentum` with `NAG(Nesterov Accelerated Gradient)` did not help up achieve a better accuracy and using gradient descent is equally efficient for this problem statement.
+- `Hessian` based analysis of the Linear Loss Landscapes may give us a better intuition for getting better accuracies and preventing optimization of the `|01> - |10>` state.
 
 
 
