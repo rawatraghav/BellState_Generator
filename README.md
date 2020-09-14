@@ -1,13 +1,28 @@
 # Auto Bell-State Generator
 
 
->## TASK-2 from the screening tasks for QOSF mentorship program
+>## TASK-2 from the screening tasks for QOSF mentorship.
 >**Submitted by:** Raghav Rawat<br><br>
 >**From:** Jaipur, India<br><br>
->**Date of Submission:** <br><br>
+>**Date of Submission:** 14th September, 2020<br><br>
 >**Time of Submission:** <br><br>
 
 ## Contents
+
+- [Problem Statement](#problem-statement)
+- [Instructions to Run Program](#instructions-to-run-program)
+- [Circuit Design](#circuit-design)
+- [Ideal quantum circuit](#ideal-quantum-circuit)
+- [Design Partitions](#design-partitions)
+- [Cirquit and Parameter Initialization](#circuit-and-parameter-initialization)
+- [Cost Function](#cost-function)
+- [Mean Squared Error](#mean-squared-error)
+- [Optimizers](#optimizers)
+  - [Gradient Descent](#gradient-descent)
+  - [Nesterov Accelerated Gradient](#nesterov-accelerated-gradient)
+- [Results and Comparison](#results-and-comparison)
+- [Bonus Question](#bonus-question)
+- [Conclusion and Future Scope](#conclusion-and-future-scope)
 
 ---
 
@@ -53,7 +68,7 @@ Implement a circuit that returns |01> and |10> with equal probability.
   2. `Cost Function` calculates the cost or error for the parameter value of current iteration.It is a classical calculation.
   3. `Optimizer`, is a classical machine learning optimizer, updates the values of parameter `theta` for better performance of the circuit. Two classical optimizers namely - 'gradient descent' and 'Nesterov Accelerated Gradient' have been used and compared.
 
-    ![Design](media/design.png)
+     ![Design](media/design.png)
   
 ---
 ## Cirquit and Parameter Initialization ##
@@ -65,20 +80,23 @@ Implement a circuit that returns |01> and |10> with equal probability.
 ### Mean Squared Error 
 - The Cost function is a simple MSE function that can be used with the first order derivative optimizers like Gradient Descent very easily.
 - The cost function is the squared difference of the Probability averages of both states `|01>` and `|10>`, that are obtained after the circuit is executed for a given number of `shots`.   
-![MSE](media/costfn.png)
+    
+    ![MSE](media/costfn.png)
 ---
 ## Optimizers ##
 ### Gradient Descent
 - The Gradient Descent Optimizer is used as it simplifies the process of convergence when our loss function is quadratic in nature.
 - The local and global minimas are same things with same depths and the `loss landscape` can be easily analysed with much less compute power, and good accuracy.
 - The parameter `theta` is being learned, using Gradient Descent and alpha is the `learning_rate`.  
-![gd](media/GDstep.png)
+
+     ![gd](media/GDstep.png)
 
 ### Nesterov Accelerated Gradient
 
 - If the momentum is too high the algorithm may miss the local minima and may continue to rise up. So, to resolve this issue the `NAG algorithm` is used.
 - We know we’ll be using `γV(t−1)` for modifying the weights so, `θ−γV(t−1)` approximately tells us the future location. 
-![NAG](media/NAGstep.png)
+     
+     ![NAG](media/NAGstep.png)
 ---
 ## Results and Comparison ##
 - The results are taken for measurements 1, 10, 100 and 1000 respectively.
@@ -87,11 +105,13 @@ Implement a circuit that returns |01> and |10> with equal probability.
 
 ### 1. Gradient Descent
 - The error of measurement reaches a max of 1.05% among all cases as seen.
-![result gradient](media/gd_output.png)
+
+     ![result gradient](media/gd_output.png)
 
 ### 1. Nesterov Accelerated Gradient
 - The error of measurement reaches a max of 1.34% among all cases.
-![result gradient](media/nag_output.png)
+
+     ![result gradient](media/nag_output.png)
 ---
 ## Bonus Question ##
 How to make sure you produce state `|01> + |10>` and not `|01> - |10>` ?
