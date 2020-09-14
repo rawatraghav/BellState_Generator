@@ -5,7 +5,7 @@
 >**Submitted by:** Raghav Rawat<br><br>
 >**From:** Jaipur, India<br><br>
 >**Date of Submission:** 14th September, 2020<br><br>
->**Time of Submission:** <br><br>
+>**Time of Submission:** 7:45 PM IST<br><br>
 
 ## Contents
 
@@ -44,7 +44,7 @@ Implement a circuit that returns |01> and |10> with equal probability.
 ---
 ## Instructions to Run Program ##
 1. Install `qiskit`
-2. Clone repository and execute python file `main.py`
+2. Clone repository and execute python file `QOSF_Task2.ipynb`
 
 ## Circuit Design ##
 - Ideal state
