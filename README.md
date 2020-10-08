@@ -1,12 +1,5 @@
 # Auto Bell-State Generator
 
-
->## TASK-2 from the screening tasks for QOSF mentorship.
->**Submitted by:** Raghav Rawat<br><br>
->**From:** Jaipur, India<br><br>
->**Date of Submission:** 14th September, 2020<br><br>
->**Time of Submission:** 7:45 PM IST<br><br>
-
 ## Contents
 
 - [Problem Statement](#problem-statement)
